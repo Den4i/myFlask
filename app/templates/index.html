@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table id="main_table" width="100%" border=0>
+			<tr>
+				<td style="vertical-align:top;width:180px;padding:0px;margin:0px;">
+					<a href="#">Контроль модулей сервера навигации</a><br>
+					<a href="#" name="control provider" onclick="">Контроль установщиков</a><br>
+					<a href="#">Контроль перевозчиков</a><br>
+					<a href="#">Обслуживание баз данных</a><br>
+					<a href="#">Управление пользователями</a><br>
+				</td>
+                <td>
+                    <table valign="top" align="center">
+                        <caption>Состояние модулей сервера обработки навигационных данных</caption>
+                        <thread>
+                            <tr>
+                                <th>Название модуля</th>
+                                <th>Состояние</th>
+                                <th>Дополнительно</th>
+                                <th>Управление</th>
+                        </thread>
+                    </table>
+                </td>
+                <td valign="top" align="center">
+                    {{user.nickname}}
+                </td>
+            </tr>
+</table>
+{% endblock %}
