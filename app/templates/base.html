@@ -5,7 +5,6 @@
     <title>Title</title>
 </head>
 <body>
- <hr>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <ul>
@@ -16,6 +15,5 @@
     {% endif %}
     {% endwith %}
 {% block content %} {% endblock %}
-
 </body>
 </html>
