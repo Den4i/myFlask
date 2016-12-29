@@ -23,3 +23,10 @@ class User(db.Model):
     def is_anonymous(self):
         # False as we do not support annonymity
         return False
+
+
+class Provider(db.Model):
+    id_ = db.Column(db.Integer, primary_key=True)
+    name_ = db.Column(db.String(50))
+
+    __tablename__ = 'providers'
