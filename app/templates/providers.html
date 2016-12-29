@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table id="main_table" width="100%" border=1>
+
+        {% for provider in providers %}
+            <tr><td>{{ provider.id_}}</td>
+            <td>{{ provider.name_ }}</td></tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

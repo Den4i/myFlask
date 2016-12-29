@@ -1,21 +1,13 @@
 from flask import render_template, flash, redirect, request, url_for, session
 from app import app
 from .forms import LoginForm
-from .models import User
+from .models import User, Provider
 
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template("index.html",
-    )
-
-
-@app.route('/module')
-def loadModule(module):
-    module = module
-    return render_template("control.html",
-                           module=module)
+    return render_template("index.html")
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -27,6 +19,12 @@ def login():
             session['user_id'] = user.id_
             flash('Welcome %s' % user.name_)
             return redirect(url_for('index'))
-        flash('Wrong email or password', 'error-message')
+        flash('Неправильный адрес или пароль', 'error-message')
     return render_template("login.html", form=form)
 
+
+@app.route('/providers')
+def providers():
+    providers = Provider.query.all()
+    return render_template("providers.html",
+                           providers=providers)
