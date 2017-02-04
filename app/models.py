@@ -30,3 +30,10 @@ class Provider(db.Model):
     name_ = db.Column(db.String(50))
 
     __tablename__ = 'providers'
+
+
+class Project(db.Model):
+    id_ = db.Column(db.Integer, primary_key=True)
+    name_ = db.Column(db.String(50))
+
+    __tablename__ = 'projects'
