@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, request, url_for, session
 from app import app
 from .forms import LoginForm
-from .models import User, Provider
+from .models import User, Provider, Project
 
 
 @app.route('/')
@@ -10,7 +10,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm(request.form)
     if request.method == 'POST':
@@ -28,3 +28,9 @@ def providers():
     providers = Provider.query.all()
     return render_template("providers.html",
                            providers=providers)
+
+@app.route('/projects')
+def projects():
+    projects = Project.query.all()
+    return render_template("projects.html",
+                           projects=projects)
