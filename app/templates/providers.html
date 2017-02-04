@@ -1,12 +1,26 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
+
+<link href="/static/css/dashboard.css" rel="stylesheet">
 
 {% block content %}
-    <table id="main_table" width="100%" border=1>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h2 class="sub-header">Установщики</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Назнавание организации</th>
+                    </tr>
+                </thead>
 
-        {% for provider in providers %}
-            <tr><td>{{ provider.id_}}</td>
-            <td>{{ provider.name_ }}</td></tr>
-        {% endfor %}
-
-    </table>
+                {% for provider in providers %}
+                <tbody>
+                    <tr>
+                        <td>{{ provider.id_}}</td>
+                        <td>{{ provider.name_ }}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+          </div>
 {% endblock %}
