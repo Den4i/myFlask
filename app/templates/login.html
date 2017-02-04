@@ -1,11 +1,14 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 
 {% block content %}
-<h1>Войти</h1>
-<form method="post" action="" class="form">
-    {{ form.csrf_token }}
-    <p>{{ form.name_.label }} {{ form.name_(size=20) }}</p>
-    {{ form.pass_.label }} {{ form.pass_(size=20) }}
-    <p><input type="submit" name="submit" value="Login"></p>
-</form>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1>Войти</h1>
+    <form method="post" action="" class="form">
+        {{ form.csrf_token }}
+        <p>{{ form.name_.label }} {{ form.name_(size=20) }}</p>
+        {{ form.pass_.label }} {{ form.pass_(size=20) }}
+        <p><input type="submit" name="submit" value="Login"></p>
+    </form>
+    </div>
 {% endblock %}
+
