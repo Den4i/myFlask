@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+<link href="/static/css/dashboard.css" rel="stylesheet">
+
+{% block content %}
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="side-header">Объекты</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Гос.номер</th>
+                        <th>Перевозчик</th>
+                        <th>Маршрут</th>
+                        <th>Установщик</th>
+                    </tr>
+                </thead>
+
+                {% for object in objects %}
+                <tbody>
+                    <tr>
+                        <td>{{ object.name_ }}</td>
+                        <td>{{ object.proj_id_ }}</td>
+                        <td>{{ object.last_rout_ }}</td>
+                        <td>{{ object.provider_ }}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+          </div>
+{% endblock %}
