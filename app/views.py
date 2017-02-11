@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, request, url_for, session
 from app import app
 from .forms import LoginForm
-from .models import User, Provider, Project
+from .models import User, Provider, Project, Route, Object
 
 
 @app.route('/')
@@ -23,14 +23,31 @@ def login():
     return render_template("login.html", form=form)
 
 
-@app.route('/providers')
-def providers():
+@app.route('/providers/')
+def get_providers():
     providers = Provider.query.all()
-    return render_template("providers.html",
-                           providers=providers)
+    return render_template("providers.html", providers=providers)
 
-@app.route('/projects')
-def projects():
+
+@app.route('/projects/')
+def get_projects():
     projects = Project.query.all()
-    return render_template("projects.html",
-                           projects=projects)
+    return render_template("projects.html", projects=projects)
+
+
+@app.route('/routs/')
+def get_routs():
+    routs = Route.query.all()
+    return render_template("routs.html", routs=routs)
+
+
+@app.route('/objects/')
+def get_objects():
+    objects = Object.query.all()
+    return render_template("objects.html", objects=objects)
+
+
+@app.route('/projects/<proj>/')
+def get_project_obj(proj):
+    obj = Object.query.filter_by(proj_id_=proj).all()
+    return render_template("objects.html", objects=obj)
