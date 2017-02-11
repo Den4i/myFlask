@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+<link href="/static/css/dashboard.css" rel="stylesheet">
+
+{% block content %}
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="side-header">Маршруты</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Название</th>
+                        <th>Активность</th>
+                    </tr>
+                </thead>
+
+                {% for rout in routs %}
+                <tbody>
+                    <tr>
+                        <td>{{ rout.id_}}</td>
+                        <td>{{ rout.name_ }}</td>
+                        <td>{{ rout.route_active_ }}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+          </div>
+{% endblock %}
