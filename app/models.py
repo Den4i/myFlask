@@ -37,3 +37,21 @@ class Project(db.Model):
     name_ = db.Column(db.String(50))
 
     __tablename__ = 'projects'
+
+
+class Route(db.Model):
+    id_ = db.Column(db.Integer, primary_key=True)
+    name_ = db.Column(db.String(50))
+    route_active_ = db.Column(db.Integer)
+
+    __tablename__ = 'routs'
+
+
+class Object(db.Model):
+    name_ = db.Column(db.String(20))
+    last_rout_ = db.Column(db.ForeignKey('route.id_'))
+    provider_ = db.Column(db.ForeignKey('provider.id_'))
+    proj_id_ = db.Column(db.ForeignKey('project.id_'))
+    obj_id_ = db.Column(db.Integer, primary_key=True)
+
+    __tablename__ = 'objects'
