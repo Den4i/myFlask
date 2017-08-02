@@ -1,7 +1,6 @@
 from flask import Flask
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
-import fdb
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -21,7 +20,5 @@ login_manager.login_view = 'login'
 def load_user(id):
     return User.query.get(int(id))
 
-
-from app import views, models
+from . import views, models
 from .models import User
-

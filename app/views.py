@@ -44,6 +44,7 @@ def get_routs():
 @app.route('/objects/')
 def get_objects():
     objects = Object.query.all()
+    #print(objects)
     return render_template("objects.html", objects=objects)
 
 
