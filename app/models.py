@@ -1,4 +1,5 @@
 from app import db
+from sqlalchemy.orm import relationship, backref
 
 
 class User(db.Model):
@@ -26,32 +27,60 @@ class User(db.Model):
 
 
 class Provider(db.Model):
+    __tablename__ = 'providers'
     id_ = db.Column(db.Integer, primary_key=True)
     name_ = db.Column(db.String(50))
-
-    __tablename__ = 'providers'
 
 
 class Project(db.Model):
+    __tablename__ = 'projects'
     id_ = db.Column(db.Integer, primary_key=True)
     name_ = db.Column(db.String(50))
-
-    __tablename__ = 'projects'
+   # objects = relationship("Object", uselist=False, backref='projects')
 
 
 class Route(db.Model):
+    __tablename__ = 'routs'
     id_ = db.Column(db.Integer, primary_key=True)
     name_ = db.Column(db.String(50))
     route_active_ = db.Column(db.Integer)
 
-    __tablename__ = 'routs'
-
 
 class Object(db.Model):
-    name_ = db.Column(db.String(20))
-    last_rout_ = db.Column(db.ForeignKey('route.id_'))
-    provider_ = db.Column(db.ForeignKey('provider.id_'))
-    proj_id_ = db.Column(db.ForeignKey('project.id_'))
-    obj_id_ = db.Column(db.Integer, primary_key=True)
-
     __tablename__ = 'objects'
+    name_ = db.Column(db.String(20))
+    last_rout_ = db.Column(db.Integer, db.ForeignKey('routs.id_'))
+    provider_ = db.Column(db.Integer, db.ForeignKey('providers.id_'))
+
+    obj_id_ = db.Column(db.Integer, primary_key=True)
+    proj_id_ = db.Column(db.Integer, db.ForeignKey('projects.id_'))
+
+    project = relationship(Project)
+    route = relationship(Route)
+    provider = relationship(Provider)
+
+
+class Person(db.Model):
+    __tablename__ = 'persons'
+    id = db.Column(db.Integer, db.Sequence('person_id_seq'), primary_key=True)
+    name = db.Column(db.String(50))
+
+    address_id = db.Column(db.Integer, db.ForeignKey('address.id'))
+    address = db.relationship('Address',
+                               backref=db.backref('persons', lazy='dynamic'))
+
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return "Person(id='%s', name='%s')" % (self.id, self.name)
+
+
+class Address(db.Model):
+    __tablename__ = 'address'
+    id = db.Column(db.Integer, db.Sequence('address_id_seq'), primary_key=True)
+    email = db.Column(db.String(50))
+
+    def __init__(self, email):
+        self.email = email
+
