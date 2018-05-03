@@ -1,5 +1,5 @@
 from app import db
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship
 
 
 class User(db.Model):
@@ -36,7 +36,6 @@ class Project(db.Model):
     __tablename__ = 'projects'
     id_ = db.Column(db.Integer, primary_key=True)
     name_ = db.Column(db.String(50))
-   # objects = relationship("Object", uselist=False, backref='projects')
 
 
 class Route(db.Model):
@@ -66,8 +65,7 @@ class Person(db.Model):
     name = db.Column(db.String(50))
 
     address_id = db.Column(db.Integer, db.ForeignKey('address.id'))
-    address = db.relationship('Address',
-                               backref=db.backref('persons', lazy='dynamic'))
+    address = db.relationship('Address', backref=db.backref('persons', lazy='dynamic'))
 
     def __init__(self, name):
         self.name = name
@@ -83,4 +81,3 @@ class Address(db.Model):
 
     def __init__(self, email):
         self.email = email
-

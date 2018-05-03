@@ -34,7 +34,6 @@
             <li><a href="/login/">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search..." id="searchRecord">
@@ -54,22 +53,6 @@
             <li><a href="/objects/">Список объектов</a></li>
             <li><a href="#">Контроль модулей сервера навигации</a></li>
           </ul>
-
-            <div class="vacation" data-price='399.99'>
-                <h3>Hawaiian Vacation</h3>
-                <p>$399.99 per ticket</p>
-                <p>Tickets:
-                    <input type='number' class='quantity' value='1' /></p>
-            </div>
-            <p>Total Price: $<span id='total'>399.99</span></p>
-
-                <li class="vacation_comments">
-                <a class="expand">Show Comments</a>
-                <ul class="mycomments">
-                    <li>Комментарий</li>
-                </ul>
-                </li>
-
         </div>
 
       {% block content %}
@@ -84,13 +67,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
 
-    <script src="/static/js/application.js"></script>
-
     <script type="text/javascript">
         $(document).ready(function() {
-            $(".nav-sidebar li").children("a").last().click(function () {
-                alert("xxx")
-            });
 
             $("#searchRecord").keyup(function(){
                 _this = this;
@@ -103,6 +81,7 @@
                     }
                 });
             });
+
         });
     </script>
   </body>
