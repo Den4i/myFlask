@@ -8,8 +8,8 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Назнавание организации</th>
+                        <th><a href="/providers/sortby/id_/">№</a></th>
+                        <th><a href="/providers/sortby/name_">Назнавание</a></th>
                     </tr>
                 </thead>
 
@@ -17,7 +17,7 @@
                 <tbody>
                     <tr>
                         <td>{{ provider.id_}}</td>
-                        <td>{{ provider.name_ }}</td>
+                        <td><a href="/providers/{{ provider.id_}}/">{{ provider.name_ }}</a></td>
                     </tr>
                 </tbody>
                 {% endfor %}

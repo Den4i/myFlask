@@ -8,16 +8,16 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Наименование организации</th>
+                        <th><a href="/projects/sortby/id_/">№</a></th>
+                        <th><a href="/projects/sortby/name_/">Название</a></th>
                     </tr>
                 </thead>
 
                 {% for project in projects %}
                 <tbody>
                     <tr>
-                        <td><a href="/projects/{{ project.id_}}/">{{ project.id_}}</a></td>
-                        <td>{{ project.name_ }}</td>
+                        <td>{{ project.id_}}</td>
+                        <td><a href="/projects/{{ project.id_}}/">{{ project.name_ }}</a></td>
                     </tr>
                 </tbody>
                 {% endfor %}
