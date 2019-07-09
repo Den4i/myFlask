@@ -1,5 +1,6 @@
 config.cfg
 tmp/
+.idea/
 
 venv
 *.pyc
